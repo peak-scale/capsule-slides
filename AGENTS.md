@@ -89,9 +89,19 @@ connector arrows/dividers, and accent words in headings. Accent colour never fil
 or a box background. Keep it sparse — it earns attention precisely because surfaces stay
 neutral navy.
 
+## Center compositions through a layout wrapper
+
+When a slide has multiple major content regions—typically a heading plus a diagram—wrap
+them in one slide-specific layout container (`.two-col`, `.rules-layout`, and so on).
+The `.slide-body` flex rule centers that wrapper as a single composition. **Do not leave
+the heading and diagram as separate flex children and compensate with manual top margins**;
+they will be positioned independently and the whole composition can sit too high or low.
+Use margins inside the wrapper only to control the spacing between its regions.
+
 ## Adding a new slide or panel — checklist
 
 - New top-level slide? → Add its `.slide--<name> .slide-body` class to the flex layout rule in `styles.css` so `deck.js` perfectly centers its content vertically.
+- Heading plus diagram? → Group them in one layout wrapper so they center together.
 - Reference `--theme-*` tokens; no literal hex in slide rules.
 - New card → use the `.panel` surface (`--panel-background` / `--theme-border` /
   `--panel-shadow`). It inherits the correct tier automatically.

@@ -438,28 +438,123 @@
           </footer>
         </section>
 
-        <section class="slide--guardrails" aria-labelledby="slide-9-title" data-background-color="var(--theme-background)">
-          <div class="guardrail-lines" aria-hidden="true"></div>
-          <div class="slide-heading slide-heading--center">
-            <h2 id="slide-9-title">Guardrails follow every<br /><span>tenant namespace.</span></h2>
+        <section class="slide--rules" aria-labelledby="slide-9-title" data-background-color="var(--theme-background)">
+          <div class="rules-layout">
+          <div class="slide-heading">
+            <h2 id="slide-9-title">Admission rules <span>per tenant.</span></h2>
           </div>
 
-          <div class="guardrail-grid">
-            <div class="guardrail-card panel"><svg viewBox="0 0 48 48"><path d="M24 4 40 10v12c0 10-6 18-16 22C14 40 8 32 8 22V10Z"/><path d="m16 24 5 5 11-12"/></svg><b>Admission rules</b><span>Enforce workload policy</span></div>
-            <div class="guardrail-card panel"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="17"/><path d="M7 24h34M24 7c6 5 9 11 9 17s-3 12-9 17c-6-5-9-11-9-17s3-12 9-17Z"/></svg><b>Networks</b><span>Distribute safe defaults</span></div>
-            <div class="guardrail-card panel"><svg viewBox="0 0 48 48"><path d="m9 15 15-8 15 8-15 8ZM9 24l15 8 15-8M9 33l15 8 15-8"/></svg><b>Classes</b><span>Allow storage &amp; runtime options</span></div>
-            <div class="guardrail-card panel"><svg viewBox="0 0 48 48"><rect x="7" y="9" width="34" height="30" rx="4"/><path d="M7 18h34M15 14h.1M21 14h.1M14 26h20M14 32h13"/></svg><b>Registries</b><span>Control image sources</span></div>
-            <div class="guardrail-card panel"><svg viewBox="0 0 48 48"><rect x="7" y="9" width="34" height="12" rx="3"/><rect x="7" y="27" width="34" height="12" rx="3"/><path d="M13 15h.1M13 33h.1M20 15h13M20 33h13"/></svg><b>Nodes</b><span>Place workloads by pool</span></div>
+          <div class="tenant-rule-flow panel" aria-label="The same Solar hostname is allowed for Solar and denied for Lunar, with each decision applying across the tenant's namespaces">
+            <div class="tenant-rule-flow__lane">
+              <div class="tenant-rule-flow__tenant">
+                <i class="dot dot--mint" aria-hidden="true"></i>
+                <b>Solar</b>
+              </div>
+              <div class="tenant-rule-flow__arrow" aria-hidden="true"></div>
+              <div class="tenant-rule-flow__rule panel__item">
+                <span>HOSTNAME</span><code>api.solar.example.com</code>
+              </div>
+              <div class="tenant-rule-flow__decision" aria-label="The Solar hostname is allowed">
+                <div class="tenant-rule-flow__arrow" aria-hidden="true"></div>
+                <span class="tenant-rule-flow__allowed"><i aria-hidden="true">✓</i> allowed</span>
+              </div>
+              <div class="tenant-rule-flow__scope panel__item">
+                <b>All Solar namespaces</b>
+              </div>
+            </div>
+
+            <div class="tenant-rule-flow__lane">
+              <div class="tenant-rule-flow__tenant">
+                <i class="dot dot--coral" aria-hidden="true"></i>
+                <b>Lunar</b>
+              </div>
+              <div class="tenant-rule-flow__arrow" aria-hidden="true"></div>
+              <div class="tenant-rule-flow__rule panel__item">
+                <span>HOSTNAME</span><code>api.<b class="tenant-rule-flow__denied-host">solar</b>.example.com</code>
+              </div>
+              <div class="tenant-rule-flow__decision" aria-label="The Solar hostname is denied">
+                <div class="tenant-rule-flow__arrow" aria-hidden="true"></div>
+                <span class="tenant-rule-flow__denied"><i aria-hidden="true">×</i> denied</span>
+              </div>
+              <div class="tenant-rule-flow__scope panel__item">
+                <b>All Lunar namespaces</b>
+              </div>
+            </div>
+          </div>
+          </div>
+        </section>
+
+        <section class="slide--workload-rules" aria-labelledby="slide-9a-title" data-background-color="var(--theme-background)">
+          <div class="two-col">
+            <div class="slide-heading">
+              <h2 id="slide-9a-title">Admit only<br /><span>trusted workloads.</span></h2>
+              <p class="supporting-copy">Restrict registries, pull policies, QoS, and priority for each tenant independently.</p>
+            </div>
+
+            <div class="policy-panel panel" aria-label="The same workload is allowed for tenant Solar and denied for tenant Lunar because each tenant has independent policy">
+              <div class="policy-workload panel__item">
+                <code>gcr.io/acme/nginx:1.27</code>
+              </div>
+              <div class="policy-evaluation" aria-hidden="true"><span>decision per tenant</span></div>
+              <div class="policy-tenants">
+                <div class="policy-tenant policy-tenant--allowed">
+                  <div><i class="dot dot--mint" aria-hidden="true"></i><b>Solar</b></div>
+                  <strong>✓ allowed</strong>
+                </div>
+                <div class="policy-tenant panel__item">
+                  <div><i class="dot dot--coral" aria-hidden="true"></i><b>Lunar</b></div>
+                  <strong>× denied</strong>
+                </div>
+              </div>
+            </div>
           </div>
 
           <footer class="slide-footer slide-footer--light">
-            <span>Ownership, resources, and policy stay consistent as teams grow.</span>
+            <span>Allow lists make unmatched workload values fail closed.</span>
           </footer>
         </section>
 
-        <section class="slide--auth" aria-labelledby="slide-9a-title" data-background-color="var(--theme-background)">
+        <section class="slide--metadata-rules" aria-labelledby="slide-9c-title" data-background-color="var(--theme-background)">
+          <div class="metadata-layout">
+            <div class="slide-heading slide-heading--center">
+              <h2 id="slide-9c-title">One metadata standard<br /><span>for every tenant.</span></h2>
+              <p class="supporting-copy">Keep required labels consistent across namespaces and their resources.</p>
+            </div>
+
+            <div class="metadata-map" aria-label="Required owner, cost-center, and environment metadata applied consistently to the namespaces of the Solar, Lunar, and Nova tenants">
+              <div class="metadata-map__standard panel">
+                <b><span>Required metadata:</span> owner, cost-center, environment</b>
+              </div>
+
+              <div class="metadata-map__branches" aria-hidden="true">
+                <i></i><i></i><i></i>
+              </div>
+
+              <div class="metadata-map__tenants">
+                <div class="metadata-map__tenant panel">
+                  <div class="metadata-map__tenant-head"><i class="dot dot--mint" aria-hidden="true"></i><b>Tenant Solar</b></div>
+                  <div class="metadata-map__namespace panel__item"><i aria-hidden="true">✓</i><span>development</span></div>
+                  <div class="metadata-map__namespace panel__item"><i aria-hidden="true">✓</i><span>production</span></div>
+                </div>
+                <div class="metadata-map__tenant panel">
+                  <div class="metadata-map__tenant-head"><i class="dot dot--coral" aria-hidden="true"></i><b>Tenant Lunar</b></div>
+                  <div class="metadata-map__namespace panel__item"><i aria-hidden="true">✓</i><span>development</span></div>
+                  <div class="metadata-map__namespace panel__item"><i aria-hidden="true">✓</i><span>production</span></div>
+                </div>
+                <div class="metadata-map__tenant panel">
+                  <div class="metadata-map__tenant-head"><i class="dot dot--blue" aria-hidden="true"></i><b>Tenant Nova</b></div>
+                  <div class="metadata-map__namespace panel__item"><i aria-hidden="true">✓</i><span>development</span></div>
+                  <div class="metadata-map__namespace panel__item"><i aria-hidden="true">✓</i><span>production</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <section class="slide--auth" aria-labelledby="slide-9e-title" data-background-color="var(--theme-background)">
           <div class="slide-heading slide-heading--center">
-            <h2 id="slide-9a-title">Uses standard<br /><span>Kubernetes authentication.</span></h2>
+            <h2 id="slide-9e-title">Uses standard<br /><span>Kubernetes authentication.</span></h2>
           </div>
 
           <div class="role-flow">
@@ -481,6 +576,36 @@
 
           <footer class="slide-footer slide-footer--light">
             <span>Capsule uses standard Kubernetes groups. Gangplank optionally helps with OIDC kubectl login.</span>
+          </footer>
+        </section>
+
+        <section class="slide--replications" aria-labelledby="slide-9f-title" data-background-color="var(--theme-background)">
+          <div class="two-col">
+            <div class="slide-heading">
+              <h2 id="slide-9f-title">Replicate resources<br /><span>automatically.</span></h2>
+              <p class="supporting-copy">Keep Secrets, ConfigMaps, and Policies in sync across all tenant namespaces with TenantResource.</p>
+            </div>
+
+            <div class="proxy-visual proxy-resource-scope panel" aria-label="TenantResource replicating a TLS Secret to all namespaces">
+              <div class="resource-scope-head">
+                <img src="assets/capsule-mark.svg" alt="" />
+                <div>
+                  <span>TenantResource</span>
+                  <b>TLS Secret</b>
+                </div>
+              </div>
+              <div class="proxy-visual__arrow" aria-hidden="true"></div>
+              <div class="resource-scope-grid">
+                <div class="resource-scope-item panel__item"><i></i><b>solar-production</b></div>
+                <div class="resource-scope-item panel__item"><i></i><b>solar-staging</b></div>
+                <div class="resource-scope-item panel__item"><i></i><b>solar-development</b></div>
+                <div class="resource-scope-item resource-scope-item--excluded panel__item"><i></i><b>lunar-development</b></div>
+              </div>
+            </div>
+          </div>
+
+          <footer class="slide-footer slide-footer--light">
+            <span>Eliminate manual copying and drift across your environment.</span>
           </footer>
         </section>
 
