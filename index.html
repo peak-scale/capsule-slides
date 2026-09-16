@@ -69,7 +69,7 @@
             <div class="shared-cluster panel panel--cluster">
               <div class="cluster-label shared-cluster__label">Shared cluster</div>
               <div class="tenant tenant--coral panel__item"><img class="tenant__mark" src="assets/capsule-mark.svg" alt="" /><b>Tenant Solar</b><span>solar-*</span></div>
-              <div class="tenant tenant--mint panel__item"><img class="tenant__mark" src="assets/capsule-mark.svg" alt="" /><b>Tenant Lunar</b><span>lunar-*</span></div>
+              <div class="tenant tenant--sky panel__item"><img class="tenant__mark" src="assets/capsule-mark.svg" alt="" /><b>Tenant Lunar</b><span>lunar-*</span></div>
               <div class="tenant tenant--blue panel__item"><img class="tenant__mark" src="assets/capsule-mark.svg" alt="" /><b>Tenant Nova</b><span>nova-*</span></div>
             </div>
           </div>
@@ -426,8 +426,8 @@
               <div class="meter"><i style="--used:64%"></i></div>
               <div class="budget-items">
                 <div class="panel__item"><i class="dot dot--coral"></i><span>production</span><b>36%</b></div>
-                <div class="panel__item"><i class="dot dot--mint"></i><span>staging</span><b>18%</b></div>
-                <div class="panel__item"><i class="dot dot--blue"></i><span>development</span><b>10%</b></div>
+                <div class="panel__item"><i class="dot dot--sky"></i><span>staging</span><b>18%</b></div>
+                <div class="panel__item"><i class="dot dot--yellow"></i><span>development</span><b>10%</b></div>
               </div>
               <p>One limit, flexible use across namespaces</p>
             </div>
@@ -447,7 +447,7 @@
           <div class="tenant-rule-flow panel" aria-label="The same Solar hostname is allowed for Solar and denied for Lunar, with each decision applying across the tenant's namespaces">
             <div class="tenant-rule-flow__lane">
               <div class="tenant-rule-flow__tenant">
-                <i class="dot dot--mint" aria-hidden="true"></i>
+                <i class="dot dot--sky" aria-hidden="true"></i>
                 <b>Solar</b>
               </div>
               <div class="tenant-rule-flow__arrow" aria-hidden="true"></div>
@@ -498,7 +498,7 @@
               <div class="policy-evaluation" aria-hidden="true"><span>decision per tenant</span></div>
               <div class="policy-tenants">
                 <div class="policy-tenant policy-tenant--allowed">
-                  <div><i class="dot dot--mint" aria-hidden="true"></i><b>Solar</b></div>
+                  <div><i class="dot dot--sky" aria-hidden="true"></i><b>Solar</b></div>
                   <strong>✓ allowed</strong>
                 </div>
                 <div class="policy-tenant panel__item">
@@ -532,7 +532,7 @@
 
               <div class="metadata-map__tenants">
                 <div class="metadata-map__tenant panel">
-                  <div class="metadata-map__tenant-head"><i class="dot dot--mint" aria-hidden="true"></i><b>Tenant Solar</b></div>
+                  <div class="metadata-map__tenant-head"><i class="dot dot--sky" aria-hidden="true"></i><b>Tenant Solar</b></div>
                   <div class="metadata-map__namespace panel__item"><i aria-hidden="true">✓</i><span>development</span></div>
                   <div class="metadata-map__namespace panel__item"><i aria-hidden="true">✓</i><span>production</span></div>
                 </div>
@@ -542,7 +542,7 @@
                   <div class="metadata-map__namespace panel__item"><i aria-hidden="true">✓</i><span>production</span></div>
                 </div>
                 <div class="metadata-map__tenant panel">
-                  <div class="metadata-map__tenant-head"><i class="dot dot--blue" aria-hidden="true"></i><b>Tenant Nova</b></div>
+                  <div class="metadata-map__tenant-head"><i class="dot dot--yellow" aria-hidden="true"></i><b>Tenant Nova</b></div>
                   <div class="metadata-map__namespace panel__item"><i aria-hidden="true">✓</i><span>development</span></div>
                   <div class="metadata-map__namespace panel__item"><i aria-hidden="true">✓</i><span>production</span></div>
                 </div>
@@ -677,6 +677,19 @@
           <footer class="slide-footer slide-footer--light">
             <span>Capsule works well with other CNCF Kubernetes based solutions.</span>
           </footer>
+        </section>
+
+        <section class="slide--headlamp" aria-labelledby="slide-10b-title" data-background-color="var(--theme-background)">
+          <div class="headlamp-layout">
+            <div class="slide-heading">
+              <h2 id="slide-10b-title">Capsule and<br /><span>Headlamp</span></h2>
+              <p class="supporting-copy">A visual workspace for tenants, owners, namespaces, quotas, replications, and proxy settings.</p>
+            </div>
+
+            <figure class="headlamp-preview panel">
+              <img src="assets/headlamp-plugin-4.png" alt="The Capsule plugin in Headlamp showing the green tenant, its owners, and its production, test, and UAT namespaces" />
+            </figure>
+          </div>
         </section>
 
         <section class="slide--cta" aria-labelledby="slide-11-title" data-brand-descriptor="CNCF Sandbox Project" data-background-color="var(--theme-background)">

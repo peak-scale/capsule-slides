@@ -1,16 +1,28 @@
 :root {
   color-scheme: dark;
-  --ink: #102a43;
-  --ink-deep: #081b2d;
+  /* The navy ground, desaturated to ~37% (from 61%) at the same hue and
+     lightness. Luminance contrast is unchanged — blue carries only 7% of
+     relative luminance — but pulling chroma out of the ground stops the deck
+     reading as one blue-on-blue wash and lets --sky sit on it as a deliberate
+     mark rather than a lighter shade of the background. */
+  --ink: #1a2a39;
+  --ink-deep: #0f1b26;
   --blue: #274872;
   --blue-bright: #5783ab;
   --blue-pale: #dbe8f0;
   --paper: #f7f8f5;
   --white: #ffffff;
   --muted: #6b7d8d;
-  --mint: #70dcc2;
-  --mint-deep: #1e9c84;
-  --coral: #ff8c73;
+  /* Accent blue, from the Peakscale palette: its "accent on dark" tone
+     (#7ac0e8, itself a lightened form of the brand blue #0580c4), lifted a
+     further 8% in lightness at the same hue and saturation. That lift puts it
+     at 8.9:1 on --ink — the contrast the old mint accent carried — while
+     keeping it in the same family as Capsule's own --blue / --blue-bright,
+     which are lifted straight from the Capsule logo. */
+  --sky: #9dd0ee;
+  /* Lifted from #ff8c73 for the same reason: as a mark on a panel's inner box
+     the old coral bottomed out at 4.7:1, the weakest colour in the deck. */
+  --coral: #ffa18d;
   --yellow: #f4d35e;
 
   /* Theme tokens: dark is the default deck theme. */
@@ -18,33 +30,33 @@
   --theme-vertical-background: var(--ink-deep);
   /* A hair darker than --ink so the nested panel recedes a little further,
      while still sitting one clear step above --ink-deep (the vertical bg). */
-  --theme-vertical-panel: #0d2338;
+  --theme-vertical-panel: #16232f;
   /* The one highlight surface for the vertical stack: a box that needs to stand
      out from its neighbours (the forwarded request, the proxy node, a section
      header). One step lighter than a panel — the emphasis is tonal, not a
      colour accent, so the stack stays a single navy ladder. */
-  --theme-panel-emphasis: #1a384f;
+  --theme-panel-emphasis: #253744;
   --theme-text: var(--white);
   --theme-muted: rgba(255, 255, 255, .72);
   --theme-subtle: rgba(255, 255, 255, .62);
-  --theme-accent: var(--mint);
-  --theme-accent-strong: var(--mint);
+  --theme-accent: var(--sky);
+  --theme-accent-strong: var(--sky);
   --theme-denied-emphasis: #ffccd8;
   --theme-card: rgba(255, 255, 255, .065);
   --theme-card-subtle: rgba(255, 255, 255, .045);
-  --theme-card-tinted: rgba(112, 220, 194, .12);
+  --theme-card-tinted: rgba(157, 208, 238, .12);
   --theme-border: rgba(255, 255, 255, .15);
   --theme-border-soft: rgba(255, 255, 255, .09);
   --theme-divider: rgba(255, 255, 255, .18);
-  --theme-accent-line: rgba(112, 220, 194, .28);
-  --theme-accent-faint: rgba(112, 220, 194, .12);
-  --theme-grid: rgba(112, 220, 194, .36);
+  --theme-accent-line: rgba(157, 208, 238, .28);
+  --theme-accent-faint: rgba(157, 208, 238, .12);
+  --theme-grid: rgba(157, 208, 238, .36);
   --theme-meter-track: rgba(255, 255, 255, .1);
   --theme-shadow: 0 24px 64px rgba(0, 0, 0, .24);
-  --panel-background: #1a384f;
+  --panel-background: #253744;
 
   /* Code and QR surfaces intentionally stay high-contrast in both themes. */
-  --code-background: #071827;
+  --code-background: #0d1821;
   --code-text: var(--white);
   --code-muted: rgba(255, 255, 255, .42);
   --qr-background: var(--white);
@@ -73,7 +85,7 @@ body[data-theme="light"] {
   --theme-panel-emphasis: var(--blue-pale);
   --theme-text: var(--ink);
   --theme-muted: var(--muted);
-  --theme-subtle: rgba(16, 42, 67, .62);
+  --theme-subtle: rgba(26, 42, 57, .62);
   --theme-accent: var(--blue-bright);
   --theme-accent-strong: var(--blue);
   --theme-denied-emphasis: #c23855;
@@ -171,6 +183,7 @@ body {
 .slide--workload-rules .slide-body,
 .slide--metadata-rules .slide-body,
 .slide--integrations .slide-body,
+.slide--headlamp .slide-body,
 .slide--auth .slide-body {
   display: flex;
   flex-direction: column;
@@ -958,7 +971,7 @@ h2 span {
 
 .terminal__bar i:first-child { background: var(--coral); }
 .terminal__bar i:nth-child(2) { background: var(--yellow); }
-.terminal__bar i:nth-child(3) { background: var(--mint); }
+.terminal__bar i:nth-child(3) { background: var(--sky); }
 
 .terminal__bar span {
   margin-left: auto;
@@ -972,7 +985,7 @@ h2 span {
 }
 
 .terminal__body p { margin: 0; }
-.terminal__body b { color: var(--mint); }
+.terminal__body b { color: var(--sky); }
 .terminal__body strong { color: var(--white); }
 
 .terminal__result {
@@ -983,7 +996,7 @@ h2 span {
 .terminal__stamp {
   padding: 15px 24px;
   color: var(--ink-deep);
-  background: var(--mint);
+  background: var(--sky);
   font-size: 15px;
   font-weight: 880;
   letter-spacing: .11em;
@@ -1794,7 +1807,7 @@ h2 span {
   width: var(--used);
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--blue-bright), var(--mint));
+  background: linear-gradient(90deg, var(--blue-bright), var(--sky));
 }
 
 .budget-items {
@@ -1821,8 +1834,8 @@ h2 span {
 }
 
 .dot--coral { background: var(--coral); }
-.dot--mint { background: var(--mint); }
-.dot--blue { background: var(--blue-bright); }
+.dot--sky { background: var(--sky); }
+.dot--yellow { background: var(--yellow); }
 
 .budget-board > p {
   margin: 28px 0 0;
@@ -2281,6 +2294,37 @@ h2 span {
   font-weight: 650;
   color: var(--theme-text);
   letter-spacing: -0.01em;
+}
+
+/* Headlamp
+   -------- */
+
+.headlamp-layout {
+  display: grid;
+  grid-template-columns: 370px minmax(0, 1fr);
+  gap: 50px;
+  align-items: center;
+  width: 1296px;
+  margin: 0 auto;
+}
+
+.slide--headlamp .slide-heading {
+  margin-top: 0;
+}
+
+.slide--headlamp .supporting-copy {
+  font-size: 22px;
+}
+
+.headlamp-preview {
+  margin: 0;
+  overflow: hidden;
+}
+
+.headlamp-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* Adoption
