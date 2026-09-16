@@ -133,25 +133,34 @@
         </section>
 
         <section class="slide--roles" aria-labelledby="slide-5-title" data-background-color="var(--theme-background)">
-          <div class="slide-heading slide-heading--center">
-            <h2 id="slide-5-title">Capsule sets the <span>boundaries.</span><br />Teams build inside them.</h2>
-          </div>
-
-          <div class="role-flow">
-            <article class="role-card role-card--platform panel">
-              <p>PLATFORM TEAM</p>
-              <h3>Defines</h3>
-              <span>owners, budgets, policies</span>
-            </article>
-            <div class="capsule-gate" aria-label="Capsule connects the platform team and app teams">
-              <img src="assets/capsule-mark.svg" alt="" />
-              <b>Capsule</b>
+          <div class="roles-layout">
+            <div class="slide-heading slide-heading--center">
+              <h2 id="slide-5-title">Capsule sets the <span>boundaries.</span><br />Teams build inside them.</h2>
             </div>
-            <article class="role-card role-card--developers panel">
-              <p>APP TEAMS</p>
-              <h3>Self-service</h3>
-              <span>namespaces, workloads, releases</span>
-            </article>
+
+            <div class="delegation-flow" aria-label="The platform team defines the boundary, tenant owners manage inside it, and app teams deploy workloads">
+              <article class="delegation-role delegation-role--platform panel">
+                <p>PLATFORM TEAM</p>
+                <h3>Defines</h3>
+                <span>ownership &amp; guardrails</span>
+              </article>
+
+              <div class="delegation-connector" aria-hidden="true"></div>
+
+              <article class="delegation-role delegation-role--owner panel">
+                <p>TENANT OWNERS</p>
+                <h3>Manage</h3>
+                <span>namespaces &amp; access</span>
+              </article>
+
+              <div class="delegation-connector" aria-hidden="true"></div>
+
+              <article class="delegation-role delegation-role--apps panel">
+                <p>APP TEAMS</p>
+                <h3>Deploy</h3>
+                <span>workloads &amp; services</span>
+              </article>
+            </div>
           </div>
 
           <footer class="slide-footer">

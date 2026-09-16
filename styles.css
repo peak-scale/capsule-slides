@@ -842,7 +842,72 @@ h2 span {
    ----- */
 
 .slide--roles .slide-heading {
-  margin-top: 40.5px;
+  margin-top: 0;
+}
+
+.roles-layout {
+  width: 100%;
+}
+
+.delegation-flow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 62px minmax(0, 1fr) 62px minmax(0, 1fr);
+  gap: 20px;
+  align-items: center;
+  width: 1180px;
+  margin: 52px auto 0;
+}
+
+.delegation-role {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  align-content: center;
+  min-width: 0;
+  min-height: 224px;
+  padding: 30px 24px;
+  text-align: center;
+}
+
+.delegation-role > p {
+  align-self: end;
+  margin: 0 0 8px;
+  color: var(--theme-accent);
+  font-size: 18px;
+  font-weight: 850;
+  letter-spacing: .12em;
+}
+
+.delegation-role > h3 {
+  margin: 0;
+  font-size: 37px;
+  letter-spacing: -.045em;
+  line-height: 1.06;
+}
+
+.delegation-role > span {
+  align-self: start;
+  margin-top: 12px;
+  color: var(--theme-muted);
+  font-size: 21px;
+  font-weight: 620;
+  white-space: nowrap;
+}
+
+.delegation-connector {
+  position: relative;
+  height: 2px;
+  background: var(--theme-accent-line);
+}
+
+.delegation-connector::after {
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  transform: translateY(-50%);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 10px solid var(--theme-accent);
+  content: "";
 }
 
 .role-flow {
