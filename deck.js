@@ -32,7 +32,7 @@
   });
 
   // Autoplay: ?seconds=N sets the interval (min 6s), ?autoplay=0 starts static.
-  const seconds = Math.max(6, Number(params.get('seconds')) || 12);
+  const seconds = Math.max(6, Number(params.get('seconds')) || 10);
   const autoSlide = params.get('autoplay') === '0' ? 0 : seconds * 1000;
 
   Reveal.initialize({
