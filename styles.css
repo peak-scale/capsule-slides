@@ -2183,6 +2183,7 @@ h2 span {
 
 .metadata-layout {
   width: 100%;
+  transform: translateY(46px);
 }
 
 .slide--metadata-rules .slide-heading {
@@ -2202,8 +2203,8 @@ h2 span {
 
 .metadata-map__standard {
   display: flex;
-  width: 540px;
-  min-height: 70px;
+  width: 600px;
+  min-height: 78px;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
@@ -2214,7 +2215,7 @@ h2 span {
 
 .metadata-map__standard b {
   color: var(--theme-text);
-  font-size: 17px;
+  font-size: 19px;
   letter-spacing: -.01em;
   white-space: nowrap;
 }
@@ -2278,6 +2279,7 @@ h2 span {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+  opacity: .32;
 }
 
 .metadata-map__tenant {
